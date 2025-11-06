@@ -1,13 +1,14 @@
 import React from 'react';
+import timeFormatter from '@/utils/timeFormatter.js';
 
-const StoryItem = ({ id, image, timestamp }) => {
+const StoryItem = ({ image, timestamp }) => {
  
   const handleStoryClick = () => {
     alert('Visualizando história');
   };
 
   return (
-    <div key={id} className="flex-shrink-0">
+    <div className="flex-shrink-0">
       <button
         onClick={handleStoryClick}
         className="flex flex-col items-center gap-2 group"
@@ -22,7 +23,7 @@ const StoryItem = ({ id, image, timestamp }) => {
           </div>
         </div>
         <span className="text-xs text-gray-600">
-          {timestamp}
+          {timeFormatter(timestamp)}
         </span>
       </button>
     </div>
