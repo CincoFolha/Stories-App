@@ -1,17 +1,19 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Plus } from 'lucide-react';
+import useImageUpload from '@/hooks/useImageUpload.js';
+import useStories from '@/hooks/useStories.js';
 
 const AddStoryButton = () => {
-  const fileInputRef = useRef(null);
-  
-  const handleFileUpload = async (e) => {
-    alert('Process image');
-  };
+  const [stories, addStory] = useStories();
+  const { 
+    fileInputRef, 
+    handleFileSelection, 
+    triggerFileInputClick } = useImageUpload(addStory);
 
   return (
     <div className="flex-shrink-0">
       <button
-        onClick={() => fileInputRef.current?.click()}
+        onClick={triggerFileInputClick}
         className="flex flex-col items-center gap-2 group"
       >
         <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center">
@@ -23,7 +25,7 @@ const AddStoryButton = () => {
         ref={fileInputRef}
         type="file"
         accept="image/*"
-        onChange={handleFileUpload}
+        onChange={handleFileSelection}
         className="hidden"
       />
     </div>
