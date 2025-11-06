@@ -1,14 +1,13 @@
 import React from 'react';
 import { Plus } from 'lucide-react';
 import useImageUpload from '@/hooks/useImageUpload.js';
-import useStories from '@/hooks/useStories.js';
 
-const AddStoryButton = () => {
-  const [stories, addStory] = useStories();
+const AddStoryButton = ({ onClick }) => {
   const { 
     fileInputRef, 
     handleFileSelection, 
-    triggerFileInputClick } = useImageUpload(addStory);
+    triggerFileInputClick 
+  } = useImageUpload(onClick);
 
   return (
     <div className="flex-shrink-0">
