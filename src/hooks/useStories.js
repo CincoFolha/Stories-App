@@ -1,25 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import storageManager from '@/utils/storageManager.js';
+
+const STORAGE_KEY = 'stories';
 
 const useStories = () => {
   const [stories, setStories] = useState(() => {
-    try {
-      const storedStories = sessionStorage.getItem('stories');
-      return storedStories ? JSON.parse(storedStories) : [];
-    } catch (error) {
-      console.error("Erro ao carregar stories do sessionStorage:", error);
-      return [];
-    }
+    return storageManager.getItem(STORAGE_KEY, []);
   });
 
   useEffect(() => {
-    try {
-      sessionStorage.setItem('stories', JSON.stringify(stories));
-    } catch (error) {
-      console.error("Erro ao salvar stories no sessionStorage:", error);
-    }
+    storageManager.setItem(STORAGE_KEY, stories);
   }, [stories]);
 
-  return [stories, setStories];
+  const addStory = useCallback((newStory) => {
+    setStories(prevStories => [...prevStories, newStory]);
+  }, []);
+
+  return [stories, addStory];
 };
 
 export default useStories;
