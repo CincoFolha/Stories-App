@@ -8,10 +8,12 @@ import '@/App.css'
 const StoriesApp = () => {
   return (
     <StoryProvider>
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
+      <div className="app-root">
         <Header />
-        <StoryList />
-        <StoryViewer />
+        <main className="app-main">
+          <StoryList />
+          <StoryViewer />
+        </main>
       </div>
     </StoryProvider>
   );
