@@ -1,0 +1,39 @@
+
+.story-nav-button {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;  
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  z-index: 50;
+  transition: background-color 0.3s ease;
+}
+
+.story-nav-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.story-nav-prev {
+  left: 16px;
+}
+
+.story-nav-next {
+  right: 16px;
+}
+
+.story-nav-icon {
+  width: 32px;
+  height: 32px;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .story-nav-button {
+    display: flex;
+  }
+}
