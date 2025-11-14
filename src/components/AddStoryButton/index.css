@@ -1,0 +1,52 @@
+
+.add-story-item {
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+
+.add-story-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.add-story-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom right, #a855f7, #ec4899);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.add-story-button:hover .add-story-avatar {
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.add-story-icon {
+  width: 32px;
+  height: 32px;
+  color: white;
+}
+
+.add-story-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  text-align: center;
+}
+
+.add-story-input {
+  display: none;
+}
