@@ -1,46 +1,34 @@
+import { STORAGE_KEY } from '@/utils/constants';
 
-const storageManager = {
-  setItem: (key, value) => {
+export const storageManager = {
+    
+  getStories: () => {
     try {
-      const serializedValue = JSON.stringify(value);
-      sessionStorage.setItem(key, serializedValue);
-    } catch (e) {
-      console.error(
-        'storageManager: Erro ao salvar a chave "${key}"', error);
+      const stored = sessionStorage.getItem(STORAGE_KEY);
+      return stored ? JSON.parse(stored) : [];
+    } catch (error) {
+      console.error('Error loading stories:', error);
+      return [];
     }
   },
 
-  getItem: (key, defaultValue = null) => {
+  saveStories: (stories) => {
     try {
-      const storedValue = sessionStorage.getItem(key);
-
-      if (storedValue === null || storedValue == undefined) {
-        return defaultValue;
-      }
-
-      try {
-        return JSON.parse(storedValue);
-      } catch (parseError) {
-        console.warn(
-          'storageManager: Falha ao fazer parse da chave "${key}"', 
-          parseError);
-        return defaultValue;
-      }
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(stories));
+      return true;
     } catch (error) {
-      console.error(
-        'storageManager: Erro ao carregar a chave ${key}', error);
-      return defaultValue;
+      console.error('Error saving stories:', error);
+      return false;
     }
   },
 
-  removeItem: (key) => {
+  clearStories: () => {
     try {
-      sessionStorage.removeItem(key);
+      sessionStorage.removeItem(STORAGE_KEY);
+      return true;
     } catch (error) {
-      console.error(
-        'storageManager: Erro ao remover a chave "${key}"', error);
+      console.error('Error clearing stories:', error);
+      return false;
     }
   }
 };
-
-export default storageManager;
