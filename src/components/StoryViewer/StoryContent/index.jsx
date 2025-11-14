@@ -1,5 +1,5 @@
-import { useSwipeGesture } from '@/hooks/useSwipeGesture.js';
-import { timeFormatter } from '@/utils/timeFormatter.js';
+import { useSwipeGesture } from '@/hooks/useSwipeGesture';
+import { timeFormatter } from '@/utils/timeFormatter';
 import './index.css';
 
 const StoryContent = ({ story, onTouchStart, onTouchMove, onTouchEnd }) => {
