@@ -6,9 +6,10 @@ const STORAGE_KEY = 'stories';
 const CHECK_INTERVAL_MS = 60000;
 
 const useStories = () => {
-  const [stories, setStories] = useState(() => {
-    return storageManager.getItem(STORAGE_KEY, []);
-  });
+  const [stories, setStories] = useState(() => storageManager.getItem(STORAGE_KEY, []) || []);
+  const [currentIndex, setCurrentIndex] = useState(null);
+
+  const viewingStory = currentIndex !== null ? stories[currentIndex] : null;
 
   const isNotExpired = useCallback(
     (story) => Date.now() < story.timestamp + EXPIRATION_TIME,
@@ -18,7 +19,7 @@ const useStories = () => {
   const removeExpiredStories = useCallback(() => {
     setStories(prevStories => {
       const filtered = prevStories.filter(isNotExpired);
-      return filtered.length === prevstories.length ? prevStories : filtered;
+      return filtered.length === prevStories.length ? prevStories : filtered;
     });
   }, [isNotExpired]);
 
@@ -35,7 +36,15 @@ const useStories = () => {
     setStories(prevStories => [...prevStories, newStory]);
   }, []);
 
-  return [stories, addStory];
+  const openStory = useCallback((index) => {
+    setCurrentIndex(index);
+  }, []);
+
+  const closeStory = useCallback(() => {
+    setCurrentIndex(null);
+  }, []);
+
+  return { stories, addStory, openStory, closeStory, viewingStory, currentIndex };
 };
 
 export default useStories;
