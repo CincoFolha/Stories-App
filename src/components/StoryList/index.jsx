@@ -1,7 +1,7 @@
 import React from 'react';
+import { useStoryContext } from '@/context/StoryContext/useStoryContext';
 import AddStoryButton from '@/components/AddStoryButton';
 import StoryItem from '@/components/StoryItem';
-import { useStoryContext } from '@/context/StoryContext/useStoryContext';
 import './index.css';
 
 const StoryList = () => {
