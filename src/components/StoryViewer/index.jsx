@@ -1,7 +1,7 @@
 import React from 'react';
 import { X } from 'lucide-react';
-import { useStoryContext } from '@/context/StoryContext/useStoryContext.js';
-import { useSwipeGesture } from '@/hooks/useSwipeGesture.js';
+import { useStoryContext } from '@/context/StoryContext/useStoryContext';
+import { useSwipeGesture } from '@/hooks/useSwipeGesture';
 import ProgressBar from '@/components/ProgressBar';
 import StoryContent from '@/components/StoryViewer/StoryContent';
 import StoryNavigation from '@/components/StoryViewer/StoryNavigation';
