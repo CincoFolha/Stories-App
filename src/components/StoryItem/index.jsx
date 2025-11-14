@@ -1,5 +1,5 @@
 import React from 'react';
-import { timeFormatter } from '@/utils/timeFormatter.js';
+import { timeFormatter } from '@/utils/timeFormatter';
 import './index.css';
 
 const StoryItem = ({ story, onClick }) => {
