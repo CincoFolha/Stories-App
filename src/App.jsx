@@ -1,19 +1,17 @@
 import React from 'react';
+import { StoryProvider } from '@/context/StoryContext/StoryContext';
 import Header from '@/components/Header';
 import StoryList from '@/components/StoryList';
 import StoryViewer from '@/components/StoryViewer';
-import { StoryProvider } from '@/context/StoryContext/StoryContext.jsx';
 import '@/App.css'
 
 const StoriesApp = () => {
   return (
     <StoryProvider>
-      <div className="app-root">
+      <div className="app-container">
         <Header />
-        <main className="app-main">
-          <StoryList />
-          <StoryViewer />
-        </main>
+        <StoryList />
+        <StoryViewer />
       </div>
     </StoryProvider>
   );
