@@ -1,50 +1,33 @@
-import { useState, useEffect, useCallback } from 'react';
-import storageManager from '@/utils/storageManager.js';
-import { EXPIRATION_TIME } from '@/utils/constants.js';
+import { useState, useEffect } from 'react';
+import { storyService } from '@/services/storyService';
+import { EXPIRATION_CHECK_INTERVAL } from '@/utils/constants.js';
 
-const STORAGE_KEY = 'stories';
-const CHECK_INTERVAL_MS = 60000;
-
-const useStories = () => {
-  const [stories, setStories] = useState(() => storageManager.getItem(STORAGE_KEY, []) || []);
-  const [currentIndex, setCurrentIndex] = useState(null);
-
-  const viewingStory = currentIndex !== null ? stories[currentIndex] : null;
-
-  const isNotExpired = useCallback(
-    (story) => Date.now() < story.timestamp + EXPIRATION_TIME,
-    []
-  );
+export const useStories = () => {
+  const [stories, setStories] = useState([]);
   
-  const removeExpiredStories = useCallback(() => {
-    setStories(prevStories => {
-      const filtered = prevStories.filter(isNotExpired);
-      return filtered.length === prevStories.length ? prevStories : filtered;
+  useEffect(() => {
+    loadStories();
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const validStories = storyService.removeExpiredStories();
+      setStories(validStories);
     });
-  }, [isNotExpired]);
 
-  useEffect(() => {
-    const interval = setInterval(removeExpiredStories, CHECK_INTERVAL_MS);
     return () => clearInterval(interval);
-  }, [removeExpiredStories]);
-
-  useEffect(() => {
-    storageManager.setItem(STORAGE_KEY, stories);
-  }, [stories]);
-
-  const addStory = useCallback((newStory) => {
-    setStories(prevStories => [...prevStories, newStory]);
   }, []);
 
-  const openStory = useCallback((index) => {
-    setCurrentIndex(index);
-  }, []);
+  const loadStories = () => {
+    const loadedStories = storyService.getAllStories();
+    const validStories = storyService.removeExpiredStories();
+    setStories(validStories);
+  };
 
-  const closeStory = useCallback(() => {
-    setCurrentIndex(null);
-  }, []);
+  const addStory = (imageBase64) => {
+    const newStory = storyService.addStory(imageBase64);
+    setStories(prev => [...prev, newStory]);
+  };
 
-  return { stories, addStory, openStory, closeStory, viewingStory, currentIndex };
+  return { stories, addStory, loadStories };
 };
-
-export default useStories;
