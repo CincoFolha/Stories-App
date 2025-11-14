@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import StoryContext from './StoryContext.jsx';
+import { StoryContext } from '@/context/StoryContext/StoryContext.jsx';
 
-const useStoryContext = () => {
+export const useStoryContext = () => {
   const context = useContext(StoryContext);
   
   if (!context) {
@@ -9,6 +9,4 @@ const useStoryContext = () => {
   }
   
   return context;
-}
-
-export default useStoryContext;
+};
