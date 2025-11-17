@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { useStories } from '@/hooks/useStories.js';
 
 export const StoryContext = createContext(null);
@@ -7,6 +7,13 @@ export const StoryProvider = ({ children }) => {
   const { stories, addStory, loadStories } = useStories();
   const [viewingStory, setViewingStory] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (!viewingStory) return;
+
+    const timerId = setTimeout(() => navigateStory(1), 3000);
+    return () => clearTimeout(timerId);
+  }, [viewingStory]);
 
   const openStory = (index) => {
     setCurrentIndex(index);
@@ -23,6 +30,8 @@ export const StoryProvider = ({ children }) => {
     if (newIndex >= 0 && newIndex < stories.length) {
       setCurrentIndex(newIndex);
       setViewingStory(stories[newIndex]);
+    } else if (newIndex >= stories.length) {
+      setViewingStory(null);
     }
   };
 
