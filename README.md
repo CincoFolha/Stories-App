@@ -39,4 +39,51 @@ Desenvolvido com **React + Vite**, totalmente no **cliente**, permitindo que o u
 
 ## 📁 Estrutura do Projeto
 
+src
+├── App.css
+├── App.jsx
+├── components
+│   ├── AddStoryButton
+│   │   ├── index.css
+│   │   └── index.jsx
+│   ├── Header
+│   │   ├── index.css
+│   │   └── index.jsx
+│   ├── ProgressBar
+│   │   ├── index.css
+│   │   └── index.jsx
+│   ├── StoryItem
+│   │   ├── index.css
+│   │   └── index.jsx
+│   ├── StoryList
+│   │   ├── index.css
+│   │   └── index.jsx
+│   └── StoryViewer
+│       ├── index.css
+│       ├── index.jsx
+│       ├── StoryContent
+│       │   ├── index.css
+│       │   └── index.jsx
+│       └── StoryNavigation
+│           ├── index.css
+│           └── index.jsx
+├── context
+│   └── StoryContext
+│       ├── StoryContext.jsx
+│       └── useStoryContext.js
+├── hooks
+│   ├── useImageUpload.js
+│   ├── useStories.js
+│   └── useSwipeGesture.js
+├── index.css
+├── main.jsx
+├── services
+│   └── storyService.js
+└── utils
+    ├── constants.js
+    ├── imageProcessor.js
+    ├── storageManager.js
+    └── timeFormatter.js
+
+14 directories, 30 files
 
