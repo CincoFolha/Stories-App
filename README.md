@@ -87,3 +87,17 @@ src
 
 14 directories, 30 files
 
+---
+
+## ▶️ Como Rodar o Projeto
+
+```bash
+# Instalar dependências
+npm install
+
+# Rodar ambiente de desenvolvimento
+npm run dev
+
+# Build para produção
+npm run build
+
