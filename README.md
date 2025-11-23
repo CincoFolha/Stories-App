@@ -1,16 +1,29 @@
-# React + Vite
+# 📸 Stories Project Clone — React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Clone moderno da funcionalidade de **Stories**, inspirado em plataformas como Instagram e WhatsApp.  
+Desenvolvido com **React + Vite**, totalmente no **cliente**, permitindo que o usuário publique imagens temporárias que desaparecem após 24 horas.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Funcionalidades
 
-## React Compiler
+- 🖼️ Upload de imagem com conversão automática para **base64**
+- 💾 Armazenamento no **localStorage**
+- ⏱️ Expiração automática dos stories após **24 horas**
+- 👆 Navegação opcional por **swipe** entre stories
+- 📱 Interface responsiva e inspirada em redes sociais reais
+- 📏 Restrições de tamanho da imagem: **máximo 1080 x 1920px**
+- 🔄 Atualização dinâmica da lista de stories
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧩 Arquitetura e Fluxo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. O usuário clica no botão **+**  
+2. Seleciona uma imagem  
+3. A imagem é convertida para **base64**  
+4. O story é salvo no `localStorage` com um timestamp  
+5. O sistema remove stories expirados ao iniciar a aplicação  
+6. A interface exibe apenas stories válidos
+
+
