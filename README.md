@@ -26,4 +26,18 @@ Desenvolvido com **React + Vite**, totalmente no **cliente**, permitindo que o u
 5. O sistema remove stories expirados ao iniciar a aplicação  
 6. A interface exibe apenas stories válidos
 
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- ⚛ **React**
+- ⚡ **Vite**
+- 🎨 CSS Responsivo (ou framework escolhido)
+- 🧰 Hooks e Context API (opcional)
+- 📦 Ferramentas adicionais de UI/UX (opcional)
+
+---
+
+## 📁 Estrutura do Projeto
+
 
