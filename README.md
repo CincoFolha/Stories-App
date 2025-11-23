@@ -32,9 +32,8 @@ Desenvolvido com **React + Vite**, totalmente no **cliente**, permitindo que o u
 
 - ⚛ **React**
 - ⚡ **Vite**
-- 🎨 CSS Responsivo (ou framework escolhido)
-- 🧰 Hooks e Context API (opcional)
-- 📦 Ferramentas adicionais de UI/UX (opcional)
+- 🎨 CSS Responsivo
+- 🧰 Hooks e Context API
 
 ---
 
