@@ -16,6 +16,7 @@ const AddStoryButton = () => {
         </div>
         <span className="add-story-label">Add Story</span>
       </button>
+      
       <input
         ref={fileInputRef}
         type="file"
