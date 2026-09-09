@@ -28,7 +28,7 @@ export const storyService = {
       return now < expiresAt;
     });
 
-    return stories;
+    return validStories;
   },
 
   isStoryExpired: (timestamp) => {
